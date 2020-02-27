@@ -16,7 +16,7 @@ pre[class*='language-'] {
 }
 
 code.language-text {
-  @apply bg-dark-purple-700 px-1 break-words whitespace-pre-line !important;
+  @apply bg-dark-purple-700 px-1 break-all whitespace-pre-wrap !important;
 }
 
 code[class*='language-']::selection,
