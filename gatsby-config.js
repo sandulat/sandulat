@@ -3,7 +3,7 @@ module.exports = {
     title: `Sandulat`,
     author: `Alexandru Stratulat`,
     description: `About Laravel and things.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    siteUrl: `https://sandulat.com/`,
     social: {
       twitter: `sandulat`,
     },
