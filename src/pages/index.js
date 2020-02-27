@@ -1,56 +1,45 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from 'react';
+import { graphql } from 'gatsby';
+import Bio from '../components/bio';
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import ArticleItem from '../components/article-item';
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
-
-const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
+const BlogIndex = ({ data }) => {
+  const posts = data.allMarkdownRemark.edges;
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout>
       <SEO title="All posts" />
-      <Bio />
-      {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
-        return (
-          <article key={node.fields.slug}>
-            <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </section>
-          </article>
-        )
-      })}
+      <div className="mb-8">
+        <Bio />
+      </div>
+      <div>
+        {posts.map(({ node }) => (
+          <ArticleItem
+            key={node.fields.slug}
+            title={node.frontmatter.title || node.fields.slug}
+            slug={node.fields.slug}
+            readingTime={node.fields.readingTime.text}
+            excerpt={node.excerpt}
+            frontmatter={node.frontmatter}
+          />
+        ))}
+      </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogIndex
+export default BlogIndex;
 
 export const pageQuery = graphql`
   query {
     site {
       siteMetadata {
         title
+        social {
+          twitter
+        }
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
@@ -59,6 +48,9 @@ export const pageQuery = graphql`
           excerpt
           fields {
             slug
+            readingTime {
+              text
+            }
           }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
@@ -69,4 +61,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

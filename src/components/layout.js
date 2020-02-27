@@ -1,72 +1,66 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react';
+import { Link, graphql, useStaticQuery } from 'gatsby';
+import Image from 'gatsby-image';
+import Logo from './logo';
+import TopGradient from './top-gradient';
+import TopParticles from './top-particles';
+import TwitterLink from './twitter-link';
+import '../styles/main.css';
 
-import { rhythm, scale } from "../utils/typography"
+const Layout = ({ children }) => {
+  const data = useStaticQuery(graphql`
+    query LayoutQuery {
+      planet: file(absolutePath: { regex: "/planet.png/" }) {
+        childImageSharp {
+          fixed(width: 300) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      site {
+        siteMetadata {
+          title
+          social {
+            twitter
+          }
+        }
+      }
+    }
+  `);
 
-const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  let header
+  const { title, social } = data.site.siteMetadata;
 
-  if (location.pathname === rootPath) {
-    header = (
-      <h1
-        style={{
-          ...scale(1.5),
-          marginBottom: rhythm(1.5),
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h1>
-    )
-  } else {
-    header = (
-      <h3
-        style={{
-          fontFamily: `Montserrat, sans-serif`,
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h3>
-    )
-  }
   return (
-    <div
-      style={{
-        marginLeft: `auto`,
-        marginRight: `auto`,
-        maxWidth: rhythm(24),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-      }}
-    >
-      <header>{header}</header>
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+    <div className="relative">
+      <div className="h-40 w-full absolute top-0">
+        <TopGradient className="h-full w-full absolute top-0 z-10" />
+        <TopParticles className="h-full w-full absolute top-0 z-0" />
+        <div className="h-full relative overflow-hidden lg:overflow-visible z-0">
+          <div className="container mx-auto relative">
+            <div className="absolute right-0 -mt-12 -mr-15 select-none">
+              <Image fixed={data.planet.childImageSharp.fixed} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container mx-auto p-5 relative z-10">
+        <header className="mb-5">
+          <Logo title={title} />
+        </header>
+        <main>{children}</main>
+        <footer className="text-xs text-dark-purple-300 tracking-wide flex items-center justify-between">
+          <div>
+            © {new Date().getFullYear()}
+            {` `}
+            <Link to={`/`}>{title}</Link>
+          </div>
+          <div>
+            <TwitterLink twitter={social.twitter} />
+          </div>
+        </footer>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

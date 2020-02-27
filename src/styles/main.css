@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-black;
+}
+
+pre[class*='language-'] {
+  @apply shadow-lg;
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+  @apply bg-dark-purple-800 rounded;
+}
+
+code.language-text {
+  @apply bg-dark-purple-700 px-1 break-words !important;
+}
+
+code[class*='language-']::selection,
+code[class*='language-'] span::selection {
+  background: rgba(159, 122, 234, 0.1);
+}
+
+code[class*='language-'] .token.comment {
+  @apply text-dark-purple-500;
+}
+
+code[class*='language-'] .token.class-name {
+  @apply text-yellow-500;
+}
+
+a {
+  @apply text-indigo-400 transition-colors duration-300;
+}
+
+a:hover {
+  @apply text-indigo-500;
+}
+
+hr {
+  @apply bg-dark-purple-500 opacity-25 h-px border-0;
+}
+
+article strong {
+  @apply text-white;
+}
+
+article ul {
+  @apply list-disc whitespace-normal list-inside;
+}
+
+article h3 {
+  @apply text-xl font-medium text-dark-purple-100;
+}
+
+article blockquote {
+  @apply whitespace-normal py-2 px-4 border-l-4 border-dark-purple-500 bg-dark-purple-800 rounded-r shadow !important;
+}
+

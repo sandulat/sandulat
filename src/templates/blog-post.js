@@ -1,54 +1,53 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from 'react';
+import { Link, graphql } from 'gatsby';
+import Image from 'gatsby-image';
+import Bio from '../components/bio';
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import { convertKitForm } from '../constants/convert-kit';
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
+const BlogPostTemplate = ({ data, pageContext }) => {
+  const post = data.markdownRemark;
 
-const BlogPostTemplate = ({ data, pageContext, location }) => {
-  const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata.title
-  const { previous, next } = pageContext
+  const { previous, next } = pageContext;
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article>
-        <header>
-          <h1
-            style={{
-              marginTop: rhythm(1),
-              marginBottom: 0,
-            }}
-          >
+      <article className="pt-5">
+        <header className="mb-5">
+          <h1 className="text-2xl text-dark-purple-100 font-medium">
             {post.frontmatter.title}
           </h1>
-          <p
-            style={{
-              ...scale(-1 / 5),
-              display: `block`,
-              marginBottom: rhythm(1),
-            }}
-          >
-            {post.frontmatter.date}
-          </p>
+          <small className="text-dark-purple-400">
+            {post.frontmatter.date} — {post.fields.readingTime.text}
+          </small>
         </header>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
+        <section
+          className="text-dark-purple-200 font-light tracking-wide leading-loose whitespace-pre-line"
+          dangerouslySetInnerHTML={{ __html: post.html }}
         />
+        <hr className="my-10" />
+        <div className="relative">
+          <div className="absolute pin-y -ml-40 mt-8 z-10 hidden md:block pointer-events-none select-none">
+            <Image fixed={data.rocket.childImageSharp.fixed} />
+          </div>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: convertKitForm,
+            }}
+          />
+        </div>
+        <hr className="my-10" />
         <footer>
           <Bio />
         </footer>
       </article>
 
-      <nav>
+      <nav className="my-5">
         <ul
           style={{
             display: `flex`,
@@ -75,16 +74,23 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         </ul>
       </nav>
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogPostTemplate
+export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     site {
       siteMetadata {
         title
+      }
+    }
+    rocket: file(absolutePath: { regex: "/rocket.png/" }) {
+      childImageSharp {
+        fixed(width: 300) {
+          ...GatsbyImageSharpFixed
+        }
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -96,6 +102,11 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         description
       }
+      fields {
+        readingTime {
+          text
+        }
+      }
     }
   }
-`
+`;
