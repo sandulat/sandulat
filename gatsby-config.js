@@ -70,5 +70,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-netlify`,
+    `gatsby-plugin-sitemap`,
   ],
 };
