@@ -20,9 +20,17 @@ pre:not(.language-text) {
   @apply text-xs leading-none;
 }
 
+code.language-text {
+  @apply text-sm tracking-wider;
+}
+
 @screen md {
   pre:not(.language-text) {
     @apply text-sm;
+  }
+
+  code.language-text {
+    @apply text-base;
   }
 }
 
