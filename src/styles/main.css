@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
 body {
   @apply bg-black;
 }
@@ -15,8 +16,19 @@ pre[class*='language-'] {
   @apply bg-dark-purple-800 rounded;
 }
 
+pre:not(.language-text) {
+  @apply text-xs leading-none;
+}
+
+@screen md {
+  pre:not(.language-text) {
+    @apply text-sm;
+  }
+}
+
 code.language-text {
-  @apply bg-dark-purple-700 px-1 break-all whitespace-pre-wrap !important;
+  word-wrap: break-word;
+  @apply bg-dark-purple-700 px-1 break-words whitespace-pre-line !important;
 }
 
 code[class*='language-']::selection,
@@ -59,4 +71,3 @@ article h3 {
 article blockquote {
   @apply whitespace-normal py-2 px-4 border-l-4 border-dark-purple-500 bg-dark-purple-800 rounded-r shadow !important;
 }
-
