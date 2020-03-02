@@ -11,11 +11,14 @@ const BlogPostTemplate = ({ data, pageContext }) => {
 
   const { previous, next } = pageContext;
 
+  const featuredImage = post.frontmatter.featuredImage;
+
   return (
     <Layout>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
+        previewImage={featuredImage}
       />
       <article className="pt-5">
         <header className="mb-5">
@@ -101,6 +104,13 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        featuredImage {
+          childImageSharp {
+            fixed(width: 800) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
       }
       fields {
         readingTime {

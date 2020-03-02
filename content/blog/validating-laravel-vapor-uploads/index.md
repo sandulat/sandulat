@@ -1,7 +1,8 @@
 ---
-title: Validating Laravel Vapor File Uploads
+title: Validating Laravel Vapor file uploads
 date: '2020-02-27'
 description: In this post you'll find out to how to define a reusable validation rule for direct S3 file uploads.
+featuredImage: featured-image.png
 ---
 
 In Laravel apps running on Vapor, users upload files directly to S3, after which the stored file path is sent to our API. Before moving out the files from the `tmp` folder, we have to make sure that:
