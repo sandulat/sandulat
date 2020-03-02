@@ -35,7 +35,7 @@ const Bio = () => {
           className="rounded-full shadow"
         />
       </a>
-      <div className="text-dark-purple-300 text-xs tracking-wide">
+      <div className="text-xs tracking-wide text-dark-purple-300">
         <p>
           By{' '}
           <a

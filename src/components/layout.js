@@ -32,23 +32,23 @@ const Layout = ({ children }) => {
 
   return (
     <div className="relative">
-      <div className="h-40 w-full absolute top-0">
-        <TopGradient className="h-full w-full absolute top-0 z-10" />
-        <TopParticles className="h-full w-full absolute top-0 z-0" />
-        <div className="h-full relative overflow-hidden lg:overflow-visible z-0">
-          <div className="container mx-auto relative">
-            <div className="absolute right-0 -mt-12 -mr-15 select-none">
+      <div className="absolute top-0 w-full h-40">
+        <TopGradient className="absolute top-0 z-10 w-full h-full" />
+        <TopParticles className="absolute top-0 z-0 w-full h-full" />
+        <div className="relative z-0 h-full overflow-hidden lg:overflow-visible">
+          <div className="container relative mx-auto">
+            <div className="absolute right-0 -mt-12 select-none -mr-15">
               <Image fixed={data.planet.childImageSharp.fixed} />
             </div>
           </div>
         </div>
       </div>
-      <div className="container mx-auto p-5 relative z-10">
+      <div className="container relative z-10 p-5 mx-auto">
         <header className="mb-5">
           <Logo title={title} />
         </header>
         <main>{children}</main>
-        <footer className="text-xs text-dark-purple-300 tracking-wide flex items-center justify-between">
+        <footer className="flex items-center justify-between text-xs tracking-wide text-dark-purple-300">
           <div>
             © {new Date().getFullYear()}
             {` `}

@@ -4,7 +4,7 @@ import Image from 'gatsby-image';
 import Bio from '../components/bio';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import { convertKitForm } from '../constants/convert-kit';
+import Signup from '../components/signup';
 
 const BlogPostTemplate = ({ data, pageContext }) => {
   const post = data.markdownRemark;
@@ -22,7 +22,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
       />
       <article className="pt-5">
         <header className="mb-5">
-          <h1 className="text-2xl text-dark-purple-100 font-medium">
+          <h1 className="text-2xl font-medium text-dark-purple-100">
             {post.frontmatter.title}
           </h1>
           <small className="text-dark-purple-400">
@@ -30,19 +30,15 @@ const BlogPostTemplate = ({ data, pageContext }) => {
           </small>
         </header>
         <section
-          className="text-dark-purple-200 font-light tracking-wide leading-loose whitespace-pre-line"
+          className="font-light leading-loose tracking-wide whitespace-pre-line text-dark-purple-200"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
         <hr className="my-10" />
         <div className="relative">
-          <div className="absolute pin-y -ml-40 mt-8 z-10 hidden md:block pointer-events-none select-none">
+          <div className="absolute z-10 hidden mt-8 -ml-40 pointer-events-none select-none pin-y md:block">
             <Image fixed={data.rocket.childImageSharp.fixed} />
           </div>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: convertKitForm,
-            }}
-          />
+          <Signup />
         </div>
         <hr className="my-10" />
         <footer>
