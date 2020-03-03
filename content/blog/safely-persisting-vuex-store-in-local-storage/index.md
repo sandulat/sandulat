@@ -1,7 +1,7 @@
 ---
 title: Safely persisting Vuex store in local storage
 date: '2020-03-03'
-description: Let's see how our front-end app's centralized store can be safely persisted in the local storage.
+description: Find out how the centralized store of your Vue app can be safely persisted in the local storage.
 featuredImage: featured-image.png
 emoji: 🔐
 ---
