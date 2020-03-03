@@ -3,6 +3,7 @@ title: Mapping requests to DTOs inside Laravel's form requests
 date: '2020-03-02'
 description: Let's explore how to map a request to a DTO inside form requests and keep our controllers clean.
 featuredImage: featured-image.png
+emoji: ⚛︎
 ---
 
 [Laravel's form requests](https://laravel.com/docs/6.x/validation#form-request-validation) are custom request classes that contain validation logic. To use them, you just have to type-hint the form request on your controller method and the incoming request will be automatically validated.

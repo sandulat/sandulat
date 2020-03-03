@@ -3,6 +3,7 @@ title: Moving from Laravel API resources to DTOs
 date: '2020-02-26'
 description: You'll discover how the default Laravel API resources can be replaced with Data Transfer Objects using Spatie's package and a few adjustments.
 featuredImage: featured-image.png
+emoji: 🧬
 ---
 
 [Laravel's API resources](https://laravel.com/docs/master/eloquent-resources) are a transformation layer that sits between your Eloquent models and the JSON responses returned by your API. This approach is completely fine, however the use case of these resources is quite limited to API responses only, they aren't type hinted and lack autocompletion.

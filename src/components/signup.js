@@ -17,7 +17,7 @@ const SignupForm = () => (
     action="https://sandulat.us7.list-manage.com/subscribe/post?u=697fc5967b213b16e703dbdf9&amp;id=5a5bb04b0e"
     method="post"
     target="_blank"
-    novalidate
+    noValidate
   >
     <Field type="text" name="FIRSTNAME" placeholder="Your first name" />
     <Field type="text" name="EMAIL" placeholder="Your email address" />

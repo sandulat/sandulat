@@ -3,6 +3,7 @@ title: Testing Laravel Vapor file uploads
 date: '2020-02-27'
 description: In this post I'll cover file upload testing for apps running on Vapor, since there is no official documentation on how to do it.
 featuredImage: featured-image.png
+emoji: 🧪
 ---
 
 Testing classic file uploads, that are submitted directly to the server, in Laravel is extremely simple, as you can see in the example below:
