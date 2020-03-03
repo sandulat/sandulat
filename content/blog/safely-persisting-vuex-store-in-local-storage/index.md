@@ -8,8 +8,6 @@ emoji: 🔐
 
 If you're building a Vue front-end app, you're most probably using Vuex as your centralized store. Usually stores are being persisted in the local storage, since cookies have a max size of 4KB, so local storage is one of your only real alternative options. However, the majority of developers store data in local storage, in it's raw version (pure JSON). Local storage isn't secure as a concept, so if you're persisting any of user's data there, you should encrypt it.
 
-> \*&nbsp;This is an opinionated approach.
-
 ### Vuex Persist
 
 For persisting my Vuex store, I'm usually using the plugin [vuex-persist](https://github.com/championswimmer/vuex-persist), which can be installed by running:
@@ -149,3 +147,7 @@ export default vuexLocal.plugin;
 ```
 
 Keep in mind that all the encryption logic is **still exposed to the client**. However, it's still much better than keeping the raw store persisted in local storage.
+
+---
+
+Hey, thanks for reading this post! Subscribe below and get notified when new posts will be released or follow me on [Twitter (@sandulat)](https://twitter.com/sandulat).
