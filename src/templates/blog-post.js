@@ -30,7 +30,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
           </small>
         </header>
         <section
-          className="font-light leading-loose tracking-wide whitespace-pre-line text-dark-purple-200"
+          className="text-lg font-light leading-relaxed tracking-wide whitespace-pre-line md:leading-loose text-dark-purple-200 md:text-base"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
         <hr className="my-10" />

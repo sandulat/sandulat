@@ -13,7 +13,7 @@ pre[class*='language-'] {
 
 code[class*='language-'],
 pre[class*='language-'] {
-  @apply bg-dark-purple-800 rounded;
+  @apply rounded bg-dark-purple-800;
 }
 
 pre:not(.language-text) {
@@ -61,7 +61,7 @@ a:hover {
 }
 
 hr {
-  @apply bg-dark-purple-500 opacity-25 h-px border-0;
+  @apply h-px border-0 opacity-25 bg-dark-purple-500;
 }
 
 article strong {
@@ -69,7 +69,7 @@ article strong {
 }
 
 article ul {
-  @apply list-disc whitespace-normal list-inside;
+  @apply whitespace-normal list-disc list-inside;
 }
 
 article h3 {

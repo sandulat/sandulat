@@ -6,7 +6,7 @@ featuredImage: featured-image.png
 emoji: 🔐
 ---
 
-If you're building a Vue front-end app, you're most probably using Vuex as your centralized store. Usually stores are being persisted in the local storage, since cookies have a max size of 4KB, so local storage is one of your only real alternative options. However, the majority of developers store data in local storage, in it's raw version (pure JSON). Local storage isn't secure as a concept, so if you're persisting any of user's data there, you should encrypt it.
+If you're building a Vue front-end app, you're most probably using Vuex as your centralized store. Usually stores are being persisted in the local storage, since cookies have a max size of 4KB, so local storage is one of your only real alternative options. However, the majority of developers store data in local storage, in its raw version (pure JSON). Local storage isn't secure as a concept, so if you're persisting any of user's data there, you should encrypt it.
 
 ### Vuex Persist
 
