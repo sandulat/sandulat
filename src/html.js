@@ -1,4 +1,5 @@
 import React from 'react';
+import { darkModeStorageKey, darkModeClass } from './theme';
 
 const HTML = ({
   htmlAttributes,
@@ -19,6 +20,24 @@ const HTML = ({
       {headComponents}
     </head>
     <body className="bg-dark-purple-100 dark:bg-black" {...bodyAttributes}>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+              (function() {
+
+                try {
+                  var darkMode = window.localStorage.getItem('${darkModeStorageKey}');
+
+                  window.darkMode = darkMode === 'true' || darkMode === null;
+
+                  if (window.darkMode) {
+                    document.documentElement.classList.add('${darkModeClass}');
+                  }
+                } catch (err) { }
+              })();
+            `,
+        }}
+      />
       {preBodyComponents}
       <div
         key={`body`}

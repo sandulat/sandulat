@@ -44,11 +44,18 @@ const Layout = ({ children }) => {
 
   return (
     <div className="relative">
-      <div className="absolute top-0 w-full h-40">
-        <TopGradient
-          className="absolute top-0 z-10 w-full h-full"
-          dark={theme.darkMode}
-        />
+      <div
+        className={`${
+          theme.loaded ? 'opacity-100' : 'opacity-0'
+        } absolute top-0 w-full h-40 transition-opacity duration-500`}
+      >
+        {theme.loaded && (
+          <TopGradient
+            className="absolute top-0 z-10 w-full h-full"
+            dark={theme.darkMode}
+          />
+        )}
+
         <TopParticles
           className="absolute top-0 z-0 w-full h-full"
           dark={theme.darkMode}
@@ -76,7 +83,13 @@ const Layout = ({ children }) => {
           <div className="mr-2">
             <Logo title={title} />
           </div>
-          <DarkModeToggle active={theme.darkMode} onToggle={toggleDarkMode} />
+          <div
+            className={`${
+              theme.loaded ? 'opacity-100' : 'opacity-0'
+            } transition-opacity duration-300`}
+          >
+            <DarkModeToggle active={theme.darkMode} onToggle={toggleDarkMode} />
+          </div>
         </header>
         <main>{children}</main>
         <footer className="flex items-center justify-between text-xs tracking-wide text-dark-purple-500 dark:text-dark-purple-300">

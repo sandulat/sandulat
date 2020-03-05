@@ -1,6 +1,6 @@
 import React from 'react';
-import AppContainer from './src/components/app-container';
+import { ThemeProvider } from './src/theme';
 
 export const wrapRootElement = ({ element }) => (
-  <AppContainer>{element}</AppContainer>
+  <ThemeProvider>{element}</ThemeProvider>
 );
