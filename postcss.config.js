@@ -4,7 +4,7 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
     './node_modules/tailwindcss-dark-mode/prefers-dark.js',
   ],
   defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
-  whitelistPatternsChildren: [/code$/, /pre$/, /token$/],
+  whitelistPatternsChildren: [/code$/, /pre$/, /token$/, /blockquote$/],
 });
 
 module.exports = () => ({
