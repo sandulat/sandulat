@@ -32,7 +32,7 @@ const SignupForm = () => (
       <button
         type="submit"
         name="subscribe"
-        className="w-full p-3 text-sm font-medium tracking-wide text-white transition-colors duration-300 bg-indigo-600 rounded hover:bg-indigo-700"
+        className="w-full p-3 text-sm font-medium tracking-wide text-white transition-colors duration-300 bg-pink-600 rounded dark:text-white hover:bg-pink-700 dark:bg-indigo-600 dark-hover:bg-indigo-700"
       >
         Subscribe
       </button>
@@ -47,13 +47,13 @@ const SignupForm = () => (
 
 const Signup = () => (
   <div className="flex flex-col rounded shadow-lg md:flex-row">
-    <div className="w-full p-8 text-white rounded-l bg-dark-purple-800 md:p-10 md:w-1/2">
+    <div className="w-full p-8 text-white rounded-t md:rounded-l md:rounded-t-none bg-dark-purple-800 md:p-10 md:w-1/2">
       <h3 className="mb-6 font-medium text-white">Join the Newsletter</h3>
       <p className="text-sm tracking-wide text-dark-purple-400">
         Subscribe to get my latest posts by email.
       </p>
     </div>
-    <div className="w-full p-8 rounded-r md:w-1/2 bg-dark-purple-700 md:p-10">
+    <div className="w-full p-8 rounded-b md:rounded-r md:rounded-b-none md:w-1/2 bg-dark-purple-700 md:p-10">
       <SignupForm />
     </div>
   </div>

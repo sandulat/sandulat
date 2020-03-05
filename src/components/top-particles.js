@@ -1,17 +1,19 @@
 import React from 'react';
 import Particles from 'react-particles-js';
 
-const TopParticles = props => (
+const TopParticles = ({ dark, ...props }) => (
   <Particles
     {...props}
     params={{
       particles: {
+        color: {
+          value: dark ? '#ffffff' : '#b83280',
+        },
         line_linked: {
           enable: false,
           distance: 150,
-          color: '#ffffff',
-          opacity: 0.4,
-          width: 1,
+          opacity: dark ? 0.4 : 1,
+          width: 10,
         },
         size: {
           value: 2,
@@ -38,10 +40,10 @@ const TopParticles = props => (
           },
         },
         number: {
-          value: 340,
+          value: dark ? 340 : 500,
           density: {
             enable: true,
-            value_area: 800,
+            value_area: dark ? 800 : 300,
           },
         },
       },

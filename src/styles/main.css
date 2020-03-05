@@ -1,11 +1,9 @@
+/* purgecss start ignore */
+@import '~prism-themes/themes/prism-material-dark.css';
 @tailwind base;
 @tailwind components;
+/* purgecss end ignore */
 @tailwind utilities;
-
-html,
-body {
-  @apply bg-black;
-}
 
 pre[class*='language-'] {
   @apply shadow-lg;
@@ -36,7 +34,11 @@ code.language-text {
 
 code.language-text {
   word-wrap: break-word;
-  @apply bg-dark-purple-700 px-1 break-words whitespace-pre-line !important;
+  @apply bg-dark-purple-200 text-dark-purple-600 px-1 break-words whitespace-pre-line !important;
+}
+
+.mode-dark code.language-text {
+  @apply text-white bg-dark-purple-700 !important;
 }
 
 code[class*='language-']::selection,
@@ -53,10 +55,18 @@ code[class*='language-'] .token.class-name {
 }
 
 a {
-  @apply text-indigo-400 transition-colors duration-300;
+  @apply text-pink-600 transition-colors duration-300;
+}
+
+.mode-dark a {
+  @apply text-indigo-400;
 }
 
 a:hover {
+  @apply text-pink-700;
+}
+
+.mode-dark a:hover {
   @apply text-indigo-500;
 }
 
@@ -65,6 +75,10 @@ hr {
 }
 
 article strong {
+  @apply text-dark-purple-700;
+}
+
+.mode-dark article strong {
   @apply text-white;
 }
 
@@ -73,9 +87,17 @@ article ul {
 }
 
 article h3 {
-  @apply text-xl font-medium text-dark-purple-100;
+  @apply text-xl font-medium text-dark-purple-500;
+}
+
+.mode-dark article h3 {
+  @apply text-dark-purple-100;
 }
 
 article blockquote {
-  @apply whitespace-normal py-2 px-4 border-l-4 border-dark-purple-500 bg-dark-purple-800 rounded-r shadow !important;
+  @apply whitespace-normal py-2 px-4 border-l-4 rounded-r shadow border-dark-purple-300 bg-dark-purple-150 !important;
+}
+
+.mode-dark article blockquote {
+  @apply border-dark-purple-500 bg-dark-purple-800 !important;
 }

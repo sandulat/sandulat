@@ -29,6 +29,7 @@
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-transformer-remark": "^2.6.48",
     "gatsby-transformer-sharp": "^2.3.13",
+    "js-cookie": "^2.2.1",
     "prism-themes": "^1.3.0",
     "prismjs": "^1.19.0",
     "react": "^16.12.0",
@@ -39,7 +40,8 @@
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.0.6",
     "prettier": "^1.19.1",
-    "tailwindcss": "^1.2.0"
+    "tailwindcss": "^1.2.0",
+    "tailwindcss-dark-mode": "^1.1.2"
   },
   "homepage": "https://github.com/sandulat/sandulat#readme",
   "keywords": [

@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 const Logo = ({ title }) => (
-  <Link to={`/`} title={title}>
-    <span className="px-3 py-1 text-xs font-medium tracking-widest text-indigo-300 uppercase transition-colors duration-300 bg-indigo-800 rounded-full shadow hover:bg-indigo-900 hover:text-indigo-400">
-      {title}
-    </span>
+  <Link
+    className="flex items-center inline-block h-6 px-3 text-xs font-medium tracking-widest text-pink-900 uppercase align-top transition-colors duration-300 bg-pink-400 rounded-full shadow dark:text-indigo-300 dark:bg-indigo-800 hover:bg-pink-500 hover:text-pink-900 dark-hover:bg-indigo-900 dark-hover:text-indigo-400"
+    to={`/`}
+    title={title}
+  >
+    {title}
   </Link>
 );
 

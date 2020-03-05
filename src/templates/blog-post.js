@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 import Bio from '../components/bio';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Signup from '../components/signup';
+import { ThemeContext } from '../theme';
 
 const BlogPostTemplate = ({ data, pageContext }) => {
   const post = data.markdownRemark;
@@ -13,6 +14,8 @@ const BlogPostTemplate = ({ data, pageContext }) => {
 
   const featuredImage = post.frontmatter.featuredImage;
 
+  const { theme } = useContext(ThemeContext);
+
   return (
     <Layout>
       <SEO
@@ -20,9 +23,9 @@ const BlogPostTemplate = ({ data, pageContext }) => {
         description={post.frontmatter.description || post.excerpt}
         previewImage={featuredImage}
       />
-      <article className="pt-5">
+      <article className="pt-12 md:pt-5">
         <header className="mb-5">
-          <h1 className="text-2xl font-medium text-dark-purple-100">
+          <h1 className="text-2xl font-medium text-dark-purple-500 dark:text-dark-purple-100">
             {post.frontmatter.title}
           </h1>
           <small className="text-dark-purple-400">
@@ -30,13 +33,19 @@ const BlogPostTemplate = ({ data, pageContext }) => {
           </small>
         </header>
         <section
-          className="text-lg font-light leading-relaxed tracking-wide whitespace-pre-line md:leading-loose text-dark-purple-200 md:text-base"
+          className="text-lg font-light leading-relaxed tracking-wide whitespace-pre-line md:leading-loose text-dark-purple-500 dark:text-dark-purple-200 md:text-base"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
         <hr className="my-10" />
         <div className="relative">
           <div className="absolute z-10 hidden mt-8 -ml-40 pointer-events-none select-none pin-y md:block">
-            <Image fixed={data.rocket.childImageSharp.fixed} />
+            <Image
+              fixed={
+                theme.darkMode
+                  ? data.rocketDark.childImageSharp.fixed
+                  : data.rocketLight.childImageSharp.fixed
+              }
+            />
           </div>
           <Signup />
         </div>
@@ -85,7 +94,14 @@ export const pageQuery = graphql`
         title
       }
     }
-    rocket: file(absolutePath: { regex: "/rocket.png/" }) {
+    rocketLight: file(relativePath: { eq: "rocket-light.png" }) {
+      childImageSharp {
+        fixed(width: 300) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    rocketDark: file(relativePath: { eq: "rocket-dark.png" }) {
       childImageSharp {
         fixed(width: 300) {
           ...GatsbyImageSharpFixed
