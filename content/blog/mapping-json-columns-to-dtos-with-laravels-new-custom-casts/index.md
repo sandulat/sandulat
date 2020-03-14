@@ -270,5 +270,9 @@ After updating the config, regenerate the phpDocs and that's it!
 
 ---
 
+> Keep in mind that I don't recommend storing the "address" as a JSON column. This minimalistic example is just for demonstration purposes.
+
+---
+
 Thanks for reading this post! Subscribe below and get notified when new posts will be released or follow me on [Twitter (@sandulat)](https://twitter.com/sandulat).
 
