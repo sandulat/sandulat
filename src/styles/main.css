@@ -98,6 +98,14 @@ article blockquote {
   @apply whitespace-normal py-2 px-4 border-l-4 rounded-r shadow border-dark-purple-300 bg-dark-purple-150 !important;
 }
 
+article .gatsby-resp-image-wrapper {
+  @apply whitespace-normal shadow-lg;
+}
+
+article .gatsby-resp-image-wrapper img {
+  @apply rounded shadow-none !important;
+}
+
 .mode-dark article blockquote {
   @apply border-dark-purple-500 bg-dark-purple-800 !important;
 }
