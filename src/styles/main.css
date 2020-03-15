@@ -99,7 +99,7 @@ article blockquote {
 }
 
 article .gatsby-resp-image-wrapper {
-  @apply whitespace-normal shadow-lg;
+  @apply whitespace-normal shadow-lg !important;
 }
 
 article .gatsby-resp-image-wrapper img {
