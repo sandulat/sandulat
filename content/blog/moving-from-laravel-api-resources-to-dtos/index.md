@@ -73,7 +73,7 @@ namespace App\DataTransferObjects;
 use Illuminate\Contracts\Support\Responsable;
 use Spatie\DataTransferObject\DataTransferObject;
 
-class ResponseData extends DataTransferObject implements Responsable
+final class ResponseData extends DataTransferObject implements Responsable
 {
     public int $status = 200;
 
@@ -143,7 +143,7 @@ use Illuminate\Contracts\Support\Responsable;
 use Spatie\DataTransferObject\DataTransferObject;
 use Spatie\DataTransferObject\DataTransferObjectCollection;
 
-class ResponsePaginationData extends DataTransferObject implements Responsable
+final class ResponsePaginationData extends DataTransferObject implements Responsable
 {
     public LengthAwarePaginator $paginator;
 
@@ -229,7 +229,7 @@ namespace App\DataTransferObjects;
 use App\Models\User;
 use Spatie\DataTransferObject\DataTransferObjectCollection;
 
-class UserCollection extends DataTransferObjectCollection
+final class UserCollection extends DataTransferObjectCollection
 {
     public function current(): UserData
     {

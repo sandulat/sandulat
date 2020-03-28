@@ -26,7 +26,7 @@ use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class StorageFile implements Rule
+final class StorageFile implements Rule
 {
     public int $maxSize;
 
@@ -101,7 +101,7 @@ use App\Rules\StorageFile;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class FileUploadRequest extends FormRequest
+final class FileUploadRequest extends FormRequest
 {
     public function rules(): array
     {

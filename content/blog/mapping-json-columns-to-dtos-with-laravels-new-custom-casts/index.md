@@ -19,7 +19,7 @@ composer require spatie/data-transfer-object
 Having the following migration:
 
 ```php
-class CreateUsersTable extends Migration
+final class CreateUsersTable extends Migration
 {
     public function up()
     {
@@ -33,7 +33,7 @@ class CreateUsersTable extends Migration
 This is how we can define the deserialization method for the `address` column in our `User` model:
 
 ```php
-class User extends Authenticatable
+final class User extends Authenticatable
 {
     protected $casts = [
         'address' => 'array',
@@ -74,7 +74,7 @@ namespace App\Casts;
 use App\Dto\UserAddress;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 
-class UserAddressCast implements CastsAttributes
+final class UserAddressCast implements CastsAttributes
 {
     /**
      * @param  \Illuminate\Database\Eloquent\Model  $model
@@ -118,7 +118,7 @@ Inside the `set` method, we're just checking if we've received an instance of `U
 All that's left is to change `array` to `UserAddressCast::class` in our user model:
 
 ```php
-class User extends Authenticatable
+final class User extends Authenticatable
 {
     protected $casts = [
         'address' => UserAddressCast::class,

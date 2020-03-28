@@ -17,7 +17,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreBlogPost extends FormRequest
+final class StoreBlogPost extends FormRequest
 {
     public function rules()
     {
@@ -151,7 +151,7 @@ namespace App\Http\Requests;
 use App\DataTransferObjects\BlogPostRequestData;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreBlogPost extends FormRequest
+final class StoreBlogPost extends FormRequest
 {
     public function rules()
     {
@@ -178,10 +178,10 @@ class StoreBlogPost extends FormRequest
 This way, we can keep our controllers clean and retrieve the mapped request using the `data` method, defined in our form request:
 
 ```php
-    public function store(StoreBlogPost $request)
-    {
-        $request->data()->title;
-    }
+public function store(StoreBlogPost $request)
+{
+    $request->data()->title;
+}
 ```
 
 ---
