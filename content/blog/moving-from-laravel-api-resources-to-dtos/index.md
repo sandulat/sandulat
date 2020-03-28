@@ -34,9 +34,9 @@ final class UserData extends DataTransferObject
 
     public string $email;
 
-    public static function fromModel(User $user): self
+    public static function fromModel(User $user): UserData
     {
-        return new self([
+        return new static([
             'id' => $user->id,
             'name' => $user->name,
             'email' => $user->email,
@@ -217,9 +217,7 @@ Output:
 }
 ```
 
-### Automating Collection Data Mapping
-
-If you've decided to instantiate your DTOs with static constructors, like the `fromModel` example above, you won't be able to instantiate your collections with the default constructor. Instead, we need to define a static constructor in collections as well:
+However, if you've decided to instantiate your DTOs with static constructors, like the `fromModel` example above, you won't be able to instantiate your collections with the default constructor. Instead, we need to define a static constructor in collections as well:
 
 ```php
 <?php
@@ -228,73 +226,25 @@ declare(strict_types=1);
 
 namespace App\DataTransferObjects;
 
+use App\Models\User;
 use Spatie\DataTransferObject\DataTransferObjectCollection;
 
 class UserCollection extends DataTransferObjectCollection
 {
-    public static function create(array $data): UserCollection
+    public function current(): UserData
     {
-        $collection = [];
-
-        foreach ($data as $item)
-        {
-            $collection[] = UserData::fromModel($item);
-        }
-
-        return new self($collection);
-    }
-}
-```
-
-To avoid the definition of such static constructors in each collection, we can create a custom `ModelCollection` class:
-
-```php
-<?php
-
-declare(strict_types=1);
-
-namespace App\DataTransferObjects;
-
-use Spatie\DataTransferObject\DataTransferObjectCollection;
-
-class ModelCollection extends DataTransferObjectCollection
-{
-    public static function create(array $data)
-    {
-        $collection = [];
-
-        foreach ($data as $item)
-        {
-            $collection[] = static::mapItem($item);
-        }
-
-        return new static($collection);
+        return parent::current();
     }
 
-    public static function mapItem($item)
+    /**
+     * @param  User[]  $data
+     * @return UserCollection
+     */
+    public static function fromArray(array $data): UserCollection
     {
-        return $item;
-    }
-}
-```
-
-Now `UserCollection` will extend `ModelCollection`:
-
-```php
-<?php
-
-declare(strict_types=1);
-
-namespace App\DataTransferObjects\Collections;
-
-use App\DataTransferObjects\ModelCollection;
-use App\DataTransferObjects\UserData;
-
-final class UserCollection extends ModelCollection
-{
-    public static function mapItem($item): UserData
-    {
-        return UserData::fromModel($item);
+        return new static(
+            array_map(fn(User $item) => UserData::fromModel($item), $data)
+        );
     }
 }
 ```
@@ -306,7 +256,7 @@ $users = User::paginate(30);
 
 return new ResponsePaginationData([
     'paginator' => $users,
-    'collection' => UserCollection::create($users->items()),
+    'collection' => UserCollection::fromArray($users->items()),
 ]);
 ```
 

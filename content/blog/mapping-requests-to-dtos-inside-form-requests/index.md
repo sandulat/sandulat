@@ -81,9 +81,9 @@ final class BlogPostRequestData extends DataTransferObject
 
     public string $body;
 
-    public static function fromRequest(Request $request): self
+    public static function fromRequest(Request $request): BlogPostRequestData
     {
-        return new self([
+        return new static([
             'title' => $request->input('title'),
             'body' => $request->input('body'),
         ]);
