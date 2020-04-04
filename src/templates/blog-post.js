@@ -56,23 +56,15 @@ const BlogPostTemplate = ({ data, pageContext }) => {
       </article>
 
       <nav className="my-5">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
+        <ul className="flex flex-wrap justify-between p-0">
+          <li className="mb-5 md:w-1/2 md:mb-0">
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
                 ← {previous.frontmatter.title}
               </Link>
             )}
           </li>
-          <li>
+          <li className="text-right md:w-1/2">
             {next && (
               <Link to={next.fields.slug} rel="next">
                 {next.frontmatter.title} →
