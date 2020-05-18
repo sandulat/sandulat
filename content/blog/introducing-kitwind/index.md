@@ -47,4 +47,6 @@ The pricing model is fairly simple. Pay once - get life-time access to all the s
 
 We have not yet established the price, but we're aiming to make the product affordable for everyone and set a fair price, under $99. Also, we will be providing **big discounts** to support you during the pandemic.
 
-If it sounds interesting to you, please visit the [official Kitwind website](https://kitwind.io/) and subscribe to get notified when Kitwind gets released. We are looking forward to seeing all the cool things that you will build!
+If it sounds interesting to you, follow us on Twitter ([@kitwindio](https://twitter.com/kitwindio)), and visit the official Kitwind website ([https://kitwind.io](https://kitwind.io/)), to subscribe and get notified when Kitwind gets released. 
+
+We are looking forward to seeing all the cool things that you will build!
